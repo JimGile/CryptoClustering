@@ -79,10 +79,10 @@ class ModelPreprocessor:
         axs.plot(x, y, 'ro')
         axs.annotate('Best k', xy=(x, y), xytext=(x+0.15, y+0.15))
 
-    def get_best_k(self, elbow_df: pd.DataFrame) -> int:
+    def get_best_k(self, elbow_df: pd.DataFrame, print_details=False) -> int:
         """
         Calculates the optimal value of k for K-Means Clustering Model based on the Elbow Curve.
-        Note: This is a best guess based on the first k value where the inertia decreases less than 5%
+        Note: This is a best guess based on the first k value where the inertia decreases less than 6%
         or hits 90% or greater of the total inertia range.
 
         Args:
@@ -90,27 +90,7 @@ class ModelPreprocessor:
 
         Returns:
             int: The optimal value of k.
-
-        The function gets the Elbow Curve DataFrame using the `get_elbow_df` method with the given
-        `k_start` and `k_end` values. It then calculates the range of inertia values used to calculate
-        the overall percentage decrease of the inertia values for each successive value of k.
-
-        It iterates over the values of k in the DataFrame, calculates the percentage decrease in inertia
-        between consecutive values, and accumulates the total percentage decrease. If the total percentage
-        decrease exceeds 90, it returns the next value of k.
         """
-        inertia_range = elbow_df['inertia'].max() - elbow_df['inertia'].min()
-        pct_decrease_total = 0
-        for i in range(1, len(elbow_df['k'])):
-            pct_decrease = (elbow_df['inertia'][i-1] -
-                            elbow_df['inertia'][i]) / inertia_range * 100
-            pct_decrease_total += pct_decrease
-            if pct_decrease_total > 90:
-                return elbow_df['k'][i]
-            if pct_decrease < 5:
-                return elbow_df['k'][i-1]
-
-    def print_best_k_details(self, elbow_df: pd.DataFrame) -> None:
         best_k = 0
         inertia_range = elbow_df['inertia'].max() - elbow_df['inertia'].min()
         pct_decrease_total = 0
@@ -120,11 +100,17 @@ class ModelPreprocessor:
             if best_k == 0:
                 if pct_decrease_total > 90:
                     best_k = elbow_df['k'][i]
-                if pct_decrease < 5:
+                if pct_decrease < 6:
                     best_k = elbow_df['k'][i-1]
-            print(f"""Pct decrease from k={elbow_df['k'][i-1]} to k={elbow_df['k'][i]}: {pct_decrease: .2f} %, \
-                  Total decrease: {pct_decrease_total: .2f} %""")
-        print(f"Best k: {best_k}")
+            if print_details:
+                print(f"""Pct decrease from k={elbow_df['k'][i-1]} to k={elbow_df['k'][i]}: {pct_decrease: .2f} %, \
+                      Total decrease: {pct_decrease_total: .2f} %""")
+        if print_details:
+            print(f"Best k: {best_k}")
+        return best_k
+
+    def print_best_k_details(self, elbow_df: pd.DataFrame) -> None:
+        self.get_best_k(elbow_df, print_details=True)
 
 
 class JgKMeans(ModelPreprocessor):

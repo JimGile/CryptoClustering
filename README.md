@@ -6,7 +6,7 @@ DU-VIRT-AI-PT-05-2024-U-LOLC-MWTH - Module 11 Challenge (Aug 4, 2024)
 
 ## Focus
 
-Module 11 focuses on the unsupervised machine learning concept of clustering. Clustering is the grouping of data so that every member of that group is similar in some way. Clustering algorithms use test data to build models that categorize the relationships among data points and partitions them in clusters. For example, when you purchase an item on a website, clustering algorithms can identify related items that people frequently purchase together.
+Module 11 focuses on the unsupervised machine learning concept of clustering. Clustering is the grouping of data so that every member of a group is similar in some way. Clustering algorithms use test data to build models that categorize the relationships among data points and partitions them into clusters. For example, when you purchase an item on a website, clustering algorithms can identify related items that people frequently purchase together.
 
 Unsupervised clustering algorithms and concepts explored in this challenge:
 

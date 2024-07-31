@@ -6,15 +6,15 @@ DU-VIRT-AI-PT-05-2024-U-LOLC-MWTH - Module 11 Challenge (Aug 4, 2024)
 
 ## Focus
 
-Module 11 focuses on the unsupervised machine learning concept of clustering. Clustering is the grouping of data so that every member of that group is similar in some way. Unsupervised clustering algorithms use test data to build models that categorize the relationships among data points and arrange them in clusters. For example, when you purchase an item on a website, unsupervised clustering algorithms can identify related items that people frequently purchase together.
+Module 11 focuses on the unsupervised machine learning concept of clustering. Clustering is the grouping of data so that every member of that group is similar in some way. Clustering algorithms use test data to build models that categorize the relationships among data points and partitions them in clusters. For example, when you purchase an item on a website, clustering algorithms can identify related items that people frequently purchase together.
 
 Unsupervised clustering algorithms and concepts explored in this challenge:
 
 * **K-Means**: A simple and efficient clustering algorithm that partitions data into (k) clusters where each cluster is represented by its mean (centroid).
 
-  * K: Refers to the number of clusters you want to divide your data into. This is a parameter you set before running the algorithm.
+  * **K**: Refers to the number of clusters you want to divide your data into. This is a parameter you set before running the algorithm.
 
-  * Means: Refers to the mean of the data points in each cluster. The algorithm iteratively adjusts the cluster centroids to minimize the distance between data points and their respective cluster centroids.
+  * **Means**: Refers to the mean of the data points in each cluster. The algorithm iteratively adjusts the cluster centroids to minimize the distance between data points and their respective cluster centroids.
 
 * **Elbow Curve**: A method to determine the optimal value of k, or the number of clusters in a dataset.  The Elbow Curve explores a range of k values to determine the number of clusters at which the data points become tightly clustered.
 
